@@ -1,0 +1,4 @@
+imports:
+    - resource: ../vendor/ql/mcp-panthor/configuration/panthor.yml
+    - resource: di.yml
+    - resource: routes.yml
