@@ -1,0 +1,20 @@
+{
+    "name": "ql/panthor-skeleton",
+    "description": "Skeleton demo application for MCP Panthor",
+    "license": "MIT",
+    "authors": [
+        { "name": "Steve Kluck", "email": "stevekluck@quickenloans.com" }
+    ],
+
+    "autoload": {
+        "psr-4": { "PanthorApplication\\": "src" }
+    },
+
+    "require": {
+        "ql/mcp-panthor":       "~2.3.1",
+        "ql/mcp-common":        "~1.0",
+
+        "paragonie/random_compat":  "~1.1",
+        "twig/twig":                "~1.20"
+    }
+}
