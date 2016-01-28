@@ -1,0 +1,15 @@
+{% extends 'layout.html.twig' %}
+
+{% set page_title = 'Twig Example Page' %}
+
+{% block page %}
+    <p>This page is rendered through Twig.</p>
+
+    <ul>
+        <li>Controller Source: <code>src/TwigController.php</code></li>
+        <li>Template Source: <code>templates/sample_page.twig</code></li>
+    </ul>
+
+    <a href="{{ urlFor('hello_world') }}">Back to Home</a>
+
+{% endblock %}

@@ -2,3 +2,11 @@ imports:
     - resource: ../vendor/ql/mcp-panthor/configuration/panthor.yml
     - resource: di.yml
     - resource: routes.yml
+
+parameters:
+
+    debug: true
+
+    table_of_contents:
+        hello_world:    ['Hello World!', 'src/TestPageController.php']
+        twig_example:   ['Twig Example', 'src/TwigController.php']

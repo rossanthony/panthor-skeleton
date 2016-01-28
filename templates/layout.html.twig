@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body { font-family: sans-serif; }
+            h1 { color: #3d68bd; font-size: 2em; }
+            h2 { font-size: 1.5em; }
+            p { max-width: 40em; }
+
+            table { border-collapse: collapse }
+            table thead { border-bottom: 2px solid #999; color: #999; }
+            table th { font-size: 1.2em; font-weight: normal; text-align: left; }
+
+            table td { padding: .15em; padding: 1em 0; }
+            table td:first-child { min-width: 200px; }
+
+            table tr:not(:last-child) { border-bottom: 1px solid #999; }
+
+            code { background: #eee; color: red; padding: 2px; }
+        </style>
+        {% block page_title %}
+            <title>{% if page_title %}{{ page_title }}{{ else }}Panthor Demo Application{% endif %}</title>
+        {% endblock %}
+    </head>
+    <body>
+        {% if page_title -%}
+            <h1>{{ page_title }}</h1>
+        {%- endif %}
+
+        <main>
+            {% block page %}{% endblock %}
+        </main>
+
+    </body>
+</html>

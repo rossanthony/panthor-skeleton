@@ -1,4 +1,5 @@
 services:
+
     # Reset slim response to not use encryption for cookies
     slim.response:
         class: 'Slim\Http\Response'
@@ -8,3 +9,16 @@ services:
         arguments:
             - '@slim.response'
             - '@url'
+            - '%table_of_contents%'
+
+    # Controller for testing twig rendering
+    page.twig:
+        class: 'PanthorApplication\TwigController'
+        arguments:
+            - '@slim.request'
+            - '@slim.response'
+            - '@page.twig.template'
+
+    page.twig.template:
+        parent: 'twig.template'
+        calls: [['setTemplate', ['sample_page.twig']]]

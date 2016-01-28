@@ -3,3 +3,6 @@ parameters:
         hello_world:
             route: '/'
             stack: ['page.hello_world']
+        twig_example:
+            route: '/twig'
+            stack: ['page.twig']
