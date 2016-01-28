@@ -41,6 +41,35 @@ class TestPageController implements ControllerInterface
             </thead>
             {examples}
         </table>
+
+        <h2>What's Next?</h2>
+
+        <p>
+            Check out the full docs at the main panthor repository:<br>
+            <a href="https://github.com/quickenloans-mcp/mcp-panthor/tree/2.3.1/docs">github.com/quickenloans-mcp/mcp-panthor - docs/</a>
+        </p>
+
+        <ul>
+            <li>Add your own logger so errors are logged somewhere!</li>
+            <li>Use <b>Encrypted Cookies</b> to improve the security of your app.</li>
+            <li>Add per-environment yaml config if you need to deploy to multiple environments.</li>
+        </ul>
+
+        <h4>Creating an HTML Application?</h4>
+        <ul>
+            <li>
+                Remove the HTTP Problem Renderer to ensure all errors render through the twig template.
+                <br><small>(Or leave it, it will not fire unless an HTTP Problem is specifically thrown)</small>
+            </li>
+        </ul>
+
+        <h4>Creating an API?</h4>
+        <ul>
+            <li>
+                Remove the HTML Renderer to ensure all errors render as HTTP Problem.
+                <br><small>(If you don't like HTTP Problem, create your own error renderer)</small>
+            </li>
+        </ul>
     </body>
 </html>
 HTML;
