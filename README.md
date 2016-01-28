@@ -32,6 +32,9 @@ server {
     location ~* \.php$ {
         try_files   $uri          /index.php?$query_string;
 
+        include                   /usr/local/etc/nginx/fastcgi_params;
+        fastcgi_param             SCRIPT_FILENAME $document_root$fastcgi_script_name;
+
         fastcgi_pass              127.0.0.1:9000;
         fastcgi_index             index.php;
     }
