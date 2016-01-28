@@ -1,0 +1,28 @@
+#!/usr/bin/env php
+<?php
+
+namespace PanthorApplication\Bin;
+
+use PanthorApplication\CachedContainer;
+use QL\Panthor\Bootstrap\Di;
+use Symfony\Component\DependencyInjection\Dumper\PhpDumper;
+
+$root = __DIR__ . '/../';
+$file = $root . 'src/CachedContainer.php';
+$class = CachedContainer::CLASS;
+
+if (!$container = @include $root . '/configuration/bootstrap.php') {
+    echo "An error occured while attempting to dump the DI Container.\n";
+    exit(1);
+};
+
+$container = Di::buildDi($root);
+
+file_put_contents($file, Di::dumpDi($container, $class));
+
+echo <<<OUTPUT
+Dumping DI Container cache:
+File: $file
+Class: $class
+
+OUTPUT;
