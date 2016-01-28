@@ -8,4 +8,15 @@ if (!$container = @include __DIR__ . '/../configuration/bootstrap.php') {
     exit;
 };
 
-$container->get('slim')->run();
+// Enable error handler first
+$handler = $container->get('error.handler');
+$handler->register();
+ini_set('display_errors', 0);
+
+$app = $container->get('slim');
+
+// Attach error handler to Slim.
+$handler->attach($app);
+
+// Start app
+$app->run();

@@ -1,5 +1,11 @@
 services:
 
+    slim:
+        parent: 'panthor.slim'
+        calls:
+            # Add the panthor middleware to prevent Slim from taking over the error handler
+            - ['add', ['@panthor.middleware.error_handling']]
+
     # Reset slim response to not use encryption for cookies
     slim.response:
         class: 'Slim\Http\Response'
@@ -22,3 +28,10 @@ services:
     page.twig.template:
         parent: 'twig.template'
         calls: [['setTemplate', ['sample_page.twig']]]
+
+    # Controller for testing how the application handles various errors
+    page.errors:
+        class: 'PanthorApplication\ErrorTestingController'
+        arguments:
+            - '@slim.request'
+            - '@slim.response'

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body { font-family: sans-serif; }
+            h1 { color: #3d68bd; font-size: 2em; }
+            h2 { font-size: 1.5em; }
+            p { max-width: 40em; }
+
+            table { border-collapse: collapse }
+            table thead { border-bottom: 2px solid #999; color: #999; }
+            table th { font-size: 1.2em; font-weight: normal; text-align: left; }
+
+            table td { padding: .15em; padding: 1em 0; }
+            table td:first-child { min-width: 200px; }
+
+            table tr:not(:last-child) { border-bottom: 1px solid #999; }
+
+            code { background: #eee; color: red; padding: 2px; }
+            pre { max-width: 60em; overflow: scroll; background: #efefef; border: 1px solid #888; padding: 2px; }
+        </style>
+        <title>Error</title>
+    </head>
+    <body>
+        <h1>Error</h1>
+
+        <main>
+            <p>An error occured and the Panthor Error Handler handled it!</p>
+            <p>The following variables are used as context when the error handler renders the error template.</p>
+
+            <table>
+                <thead>
+                    <th>Variable</th>
+                    <th>Value</th>
+                </thead>
+                <tr>
+                    <td><code>message</code></td>
+                    <td>{{ message }}</td>
+                </tr>
+                <tr>
+                    <td><code>status</code></td>
+                    <td>{{ status }}</td>
+                </tr>
+                <tr>
+                    <td><code>severity</code></td>
+                    <td>{{ severity }}</td>
+                </tr>
+                <tr>
+                    <td><code>exception</code></td>
+                    <td><pre>{{ exception }}</pre></td>
+                </tr>
+            </table>
+        </main>
+    </body>
+</html>
