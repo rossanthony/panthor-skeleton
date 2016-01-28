@@ -35,3 +35,13 @@ services:
         arguments:
             - '@slim.request'
             - '@slim.response'
+
+    api.example:
+        class: 'PanthorApplication\APIController'
+        arguments:
+            - '@slim.request'
+            - '@slim.response'
+            - '@json'
+
+    api.problem:
+        class: 'PanthorApplication\APIProblemController'

@@ -11,3 +11,11 @@ parameters:
         errors:
             route: '/error'
             stack: ['page.errors']
+
+        api_example:
+            route: '/api-example'
+            stack: ['api.example']
+
+        api_problem:
+            route: '/api-problem'
+            stack: ['api.problem']
