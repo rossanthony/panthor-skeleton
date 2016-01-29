@@ -9,8 +9,9 @@ more quickly.
 How to install:
 
 1. Clone this repository.
-2. Setup an NGINX virtual host and point it to `public/index.php`.
-3. Load the site and check out some of the sample pages.
+2. Run `composer install`.
+3. Setup an NGINX virtual host and point it to `public/index.php`.
+4. Load the site and check out some of the sample pages.
 
 Please see [ql/mcp-panthor](https://github.com/quickenloans-mcp/mcp-panthor) for full documentation.
 
