@@ -1,2 +1,8 @@
+# Template Caching
+/.twig/
+
+# DI Caching
 /src/CachedContainer.php
+
+# Package Management
 /vendor/

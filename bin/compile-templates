@@ -1,0 +1,62 @@
+#!/usr/bin/env php
+<?php
+
+namespace PanthorApplication\Bin;
+
+use QL\Panthor\Bootstrap\Di;
+use Slim\Environment;
+use Symfony\Component\Finder\Finder;
+use Twig_Cache_Filesystem;
+
+$root = __DIR__ . '/..';
+require_once $root . '/vendor/autoload.php';
+
+if (!$container = @include $root . '/configuration/bootstrap.php') {
+    echo "An error occured while attempting to dump the DI Container.\n";
+    exit(1);
+};
+
+// Prime slim and its environment since it is in the dependency tree of Panthor Twig Extension
+Environment::mock(['PATH_INFO' => '/']);
+$container->get('slim');
+
+$twigDir = $container->get('twig.template.dir');
+$twigCacheDir = $container->get('twig.cache.dir');
+
+$twig = $container->get('twig.environment');
+$loader = $container->get('twig.loader');
+$cache = new Twig_Cache_Filesystem($twigCacheDir);
+
+// find and attempt to load the templates
+$files = (new Finder)
+    ->files()
+    ->name('*.twig')
+    ->in($twigDir);
+
+echo <<<OUTPUT
+Compiling twig templates
+Source: $twigDir
+Target: $twigCacheDir
+
+
+OUTPUT;
+
+if (!$files) {
+    echo "No templates found.\n";
+    exit(0);
+}
+
+// Always create twig cache if not already found
+if (!file_exists($twigCacheDir)) {
+    mkdir($twigCacheDir);
+}
+
+echo "Templates:\n";
+foreach ($files as $file) {
+    $name = $file->getRelativePathname();
+    echo $name . "\n";
+
+    $key = $cache->generateKey($name, $twig->getTemplateClass($name));
+    $content = $twig->compileSource($loader->getSource($name), $name);
+    $cache->write($key, $content);
+}

@@ -53,7 +53,11 @@ class TestPageController implements ControllerInterface
             <li>Add your own logger so errors are logged somewhere!</li>
             <li>Use <b>Encrypted Cookies</b> to improve the security of your app.</li>
             <li>Add per-environment yaml config if you need to deploy to multiple environments.</li>
-            <li>Make sure you call <code>bin/compile-di</code> to cache the DI container before deploying to a production environment.</li>
+            <li>Run <code>bin/compile-di</code> to cache the DI container before deploying to a production environment.</li>
+            <li>
+                Run <code>bin/compile-templates</code> to cache templates before deploying to a production environment.
+                <br><small>Template caching is disabled by default. Set <code>%twig.debug%</code> to <code>false</code> when deploying your app.</small>
+            </li>
         </ul>
 
         <h4>Creating an HTML Application?</h4>
@@ -62,10 +66,6 @@ class TestPageController implements ControllerInterface
                 Remove the HTTP Problem Renderer to ensure all errors render through the twig template.
                 <br><small>(Or leave it, it will not fire unless an HTTP Problem is specifically thrown)</small>
             </li>
-            <li>
-                Create a build script to compile Twig templates.
-                <br><small>This must be done during your build process instead of on your web servers!</small>
-            </il>
         </ul>
 
         <h4>Creating an API?</h4>
