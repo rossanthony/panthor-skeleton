@@ -14,6 +14,10 @@ How to install:
 
 Please see [ql/mcp-panthor](https://github.com/quickenloans-mcp/mcp-panthor) for full documentation.
 
+## Example Application
+
+![Example](/public/example.png?raw=true)
+
 ## Example NGINX Configuration
 
 This example assumes you cloned this repository to `/var/www/panthor-skeleton`.

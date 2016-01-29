@@ -13,7 +13,7 @@ class TestPageController implements ControllerInterface
 <html>
     <head>
         <style>
-            body { font-family: sans-serif; }
+            body { font-family: sans-serif; line-height: 1.25em; }
             h1 { color: #3d68bd; font-size: 2em; }
             h2 { font-size: 1.5em; }
             p { max-width: 40em; }
@@ -53,9 +53,9 @@ class TestPageController implements ControllerInterface
             <li>Add your own logger so errors are logged somewhere!</li>
             <li>Use <b>Encrypted Cookies</b> to improve the security of your app.</li>
             <li>Add per-environment yaml config if you need to deploy to multiple environments.</li>
-            <li>Run <code>bin/compile-di</code> to cache the DI container before deploying to a production environment.</li>
+            <li>Run <code>bin/compile-di</code> to cache the DI container before deploying to production.</li>
             <li>
-                Run <code>bin/compile-templates</code> to cache templates before deploying to a production environment.
+                Run <code>bin/compile-templates</code> to cache templates before deploying to production.
                 <br><small>Template caching is disabled by default. Set <code>%twig.debug%</code> to <code>false</code> when deploying your app.</small>
             </li>
         </ul>
