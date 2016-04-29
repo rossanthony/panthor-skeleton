@@ -1,0 +1,21 @@
+#!/usr/bin/env php
+<?php
+
+namespace PanthorApplication\Bin;
+
+$root = __DIR__ . '/..';
+require_once $root . '/vendor/autoload.php';
+
+if (!$container = @include $root . '/configuration/bootstrap.php') {
+    echo "An error occured while attempting to cache routes.\n";
+    exit(1);
+};
+
+$router = $container->get('router');
+$router->setCaching($container->get('router.cache_file'), false);
+
+$app = $container->get('slim');
+$routes = $container->get('panthor.routes');
+$routes($app);
+
+$router->initializeDispatcher();

@@ -4,5 +4,8 @@
 # DI Caching
 /src/CachedContainer.php
 
+# Route Caching
+/configuration/routes.cached.php
+
 # Package Management
 /vendor/
