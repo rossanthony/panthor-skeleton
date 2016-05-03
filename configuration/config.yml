@@ -7,8 +7,14 @@ imports:
 parameters:
 
     table_of_contents:
-        hello_world:    ['Hello World!', 'src/TestPageController.php']
-        twig_example:   ['Twig Example', 'src/TwigController.php']
-        errors:         ['Test Error Handling', 'src/ErrorTestingController.php']
-        api_example:    ['API Example', 'src/APIController.php']
-        api_problem:    ['API Problem', 'src/APIProblemController.php']
+        hello_world:         ['Hello World!', 'src/TestPageController.php']
+        twig_example:        ['Twig Example', 'src/TwigController.php']
+        errors:              ['Test Error Handling', 'src/ErrorTestingController.php']
+        api_example:         ['API Example', 'src/APIController.php']
+        api_problem:         ['API Problem', 'src/APIProblemController.php']
+        cookie:              ['Cookie Test', 'src/CookieTestPageController.php']
+        encrypted_cookie:    ['Encrypted Cookie Test', 'src/EncryptedCookieTestPageController.php']
+        hello_world_grouped: ['Hello World! (within Route Group)', 'src/TestPageController.php']
+
+    # Used by encrypted cookies
+    cookie.encryption.secret: 'a8039aee6e335f2a34395a20ef59f16bbc475f240d10a22c0faa937ae1d057a7687a79098695d6c2652a8c7b0b5fa5713c48f9df79765e3589a7df29b8e2372b'

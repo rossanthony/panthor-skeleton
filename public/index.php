@@ -24,5 +24,9 @@ $container
     ->get('exception.handler')
     ->attachSlim($app);
 
+// Uncomment to enable encrypted cookies
+// $encryptedCookies = $container->get('panthor.middleware.encrypted_cookies');
+// $app->add($encryptedCookies);
+
 // Start app
 $app->run();

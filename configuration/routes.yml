@@ -19,3 +19,19 @@ parameters:
         api_problem:
             route: '/api-problem'
             stack: ['api.problem']
+
+        encrypted_cookie:
+            route: '/encrypted-cookie'
+            stack: ['page.encrypted_cookie']
+
+        cookie:
+            route: '/cookie'
+            stack: ['page.cookie']
+
+        group_example:
+            route: '/group'
+            stack: ['middleware.test']
+            routes:
+                hello_world_grouped:
+                    route: '/hello-world'
+                    stack: ['page.hello_world']

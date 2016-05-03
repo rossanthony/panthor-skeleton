@@ -10,7 +10,6 @@ services:
         class: 'PanthorApplication\TestPageController'
         arguments:
             - '@uri'
-            - '@cookie.handler'
             - '%table_of_contents%'
 
     # Controller for testing twig rendering
@@ -34,3 +33,14 @@ services:
     api.problem:
         class: 'PanthorApplication\APIProblemController'
         arguments: ['@problem.renderer']
+
+    # Test cookie reading/writing
+    page.cookie:
+        class: 'PanthorApplication\CookieTestPageController'
+
+    page.encrypted_cookie:
+        class: 'PanthorApplication\EncryptedCookieTestPageController'
+        arguments: ['@cookie.handler']
+
+    middleware.test:
+        class: 'PanthorApplication\TestMiddleware'
