@@ -1,29 +1,22 @@
 services:
 
-    slim:
-        parent: 'panthor.slim'
-        calls:
-            # Add the panthor middleware to prevent Slim from taking over the error handler
-            - ['add', ['@panthor.middleware.error_handling']]
-
-    # Reset slim response to not use encryption for cookies
-    slim.response:
-        class: 'Slim\Http\Response'
+    # Replace slim handlers with our own
+    notFoundHandler:     { alias: 'panthor.handler.notFoundHandler' }
+    notAllowedHandler:   { alias: 'panthor.handler.notAllowedHandler' }
+    phpErrorHandler:     { alias: 'panthor.handler.phpErrorHandler' }
+    errorHandler:        { alias: 'panthor.handler.errorHandler' }
 
     page.hello_world:
         class: 'PanthorApplication\TestPageController'
         arguments:
-            - '@slim.response'
-            - '@url'
+            - '@uri'
+            - '@cookie.handler'
             - '%table_of_contents%'
 
     # Controller for testing twig rendering
     page.twig:
         class: 'PanthorApplication\TwigController'
-        arguments:
-            - '@slim.request'
-            - '@slim.response'
-            - '@page.twig.template'
+        arguments: ['@page.twig.template']
 
     page.twig.template:
         parent: 'twig.template'
@@ -32,16 +25,12 @@ services:
     # Controller for testing how the application handles various errors
     page.errors:
         class: 'PanthorApplication\ErrorTestingController'
-        arguments:
-            - '@slim.request'
-            - '@slim.response'
+        arguments: ['@uri']
 
     api.example:
         class: 'PanthorApplication\APIController'
-        arguments:
-            - '@slim.request'
-            - '@slim.response'
-            - '@json'
+        arguments: ['@json']
 
     api.problem:
         class: 'PanthorApplication\APIProblemController'
+        arguments: ['@problem.renderer']
