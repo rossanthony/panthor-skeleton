@@ -11,14 +11,14 @@
     },
 
     "require": {
-        "ql/mcp-panthor":       "~2.4.0",
+        "ql/mcp-panthor":       "~3.0",
         "ql/mcp-common":        "~1.0",
 
-        "slim/slim":                    "~2.6",
-        "symfony/config":               "~2.8",
-        "symfony/dependency-injection": "~2.8",
-        "symfony/finder":               "~2.8",
-        "symfony/yaml":                 "~2.8",
+        "slim/slim":                    "~3.3",
+        "symfony/config":               "~3.0",
+        "symfony/dependency-injection": "~3.0",
+        "symfony/finder":               "~3.0",
+        "symfony/yaml":                 "~3.0",
 
         "paragonie/random_compat":  "~1.1",
         "twig/twig":                "~1.24"
