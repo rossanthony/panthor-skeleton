@@ -11,12 +11,18 @@ if (!$container = @include __DIR__ . '/../configuration/bootstrap.php') {
 // Enable error handler first
 $handler = $container->get('error.handler');
 $handler->register();
+$handler->registerShutdown();
 ini_set('display_errors', 0);
 
 $app = $container->get('slim');
+$routes = $container->get('router.loader');
 
-// Attach error handler to Slim.
-$handler->attach($app);
+$routes($app);
+
+// Attach slim to exception handler for error rendering.
+$container
+    ->get('exception.handler')
+    ->attachSlim($app);
 
 // Start app
 $app->run();
