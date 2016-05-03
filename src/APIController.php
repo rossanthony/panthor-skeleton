@@ -2,42 +2,30 @@
 
 namespace PanthorApplication;
 
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use QL\Panthor\ControllerInterface;
 use QL\Panthor\Utility\Json;
-use Slim\Http\Request;
-use Slim\Http\Response;
 
 class APIController implements ControllerInterface
 {
-    /**
-     * @var Request
-     */
-    private $request;
-
-    /**
-     * @var Response
-     */
-    private $response;
-
     /**
      * @var Json
      */
     private $json;
 
     /**
-     * @param Request $request
-     * @param Response $response
      * @param Json $json
      */
-    public function __construct(Request $request, Response $response, Json $json)
+    public function __construct(Json $json)
     {
-        $this->request = $request;
-        $this->response = $response;
-
         $this->json = $json;
     }
 
-    public function __invoke()
+    /**
+     * {@inheritdoc}
+     */
+    public function __invoke(ServerRequestInterface $request, ResponseInterface $response)
     {
         // Example from HAL Hypermedia spec at http://stateless.co/hal_specification.html
         $data = [
@@ -84,7 +72,9 @@ class APIController implements ControllerInterface
 
         $rendered = $this->json->encode($data);
 
-        $this->response->setBody($rendered);
-        $this->response->headers->set('Content-Type', 'application/hal+json');
+        $response->getBody()->write($rendered);
+        $response = $response->withHeader('Content-Type', 'application/hal+json');
+
+        return $response;
     }
 }

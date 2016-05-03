@@ -45,9 +45,22 @@
                     <td><code>severity</code></td>
                     <td>{{ severity }}</td>
                 </tr>
+
+                {% if details %}
+                    <tr>
+                        <td><code>details</code></td>
+                        <td>
+                            <pre>{{ details }}</pre>
+                            Error details are toggled by <code>slim.settings.display_errors</code> in config which defaults to <code>true</code>.<br>
+                            Full stacktrace is toggled by <code>error_handling.log_stacktrace</code> and defaults to <code>false</code>.
+                        </td>
+                    </tr>
+                {% endif %}
+
+
                 <tr>
                     <td><code>exception</code></td>
-                    <td><pre>{{ exception }}</pre></td>
+                    <td><pre>{{ throwable }}</pre></td>
                 </tr>
             </table>
         </main>

@@ -3,9 +3,10 @@
 namespace PanthorApplication;
 
 use Exception;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use QL\Panthor\ControllerInterface;
-use Slim\Http\Request;
-use Slim\Http\Response;
+use QL\Panthor\Utility\URI;
 
 class ErrorTestingController implements ControllerInterface
 {
@@ -92,30 +93,28 @@ class ErrorTestingController implements ControllerInterface
 HTML;
 
     /**
-     * @var Request
+     * @var URI
      */
-    private $request;
+    private $uri;
 
     /**
-     * @var Response
+     * @param URI $uri
      */
-    private $response;
-
-    /**
-     * @param Request $request
-     * @param Response $response
-     */
-    public function __construct(Request $request, Response $response)
+    public function __construct(URI $uri)
     {
-        $this->request = $request;
-        $this->response = $response;
+        $this->uri = $uri;
     }
 
-    public function __invoke()
+    /**
+     * {@inheritdoc}
+     */
+    public function __invoke(ServerRequestInterface $request, ResponseInterface $response)
     {
         $alert = '';
 
-        if ($error = $this->request->get('type')) {
+        $error = $this->uri->getQueryParam($request->getUri(), 'type');
+
+        if ($error) {
             $isValidError = $this->throwError($error);
             if ($isValidError) {
                 $alert = sprintf('<p class="alert">Error triggered: %s</p>', $error);
@@ -123,7 +122,9 @@ HTML;
         }
 
         $rendered = str_replace('{triggered}', $alert, self::HTML);
-        $this->response->setBody($rendered);
+
+        $response->getBody()->write($rendered);
+        return $response;
     }
 
     /**

@@ -3,8 +3,9 @@
 namespace PanthorApplication;
 
 use QL\Panthor\ControllerInterface;
-use QL\Panthor\Utility\Url;
-use Slim\Http\Response;
+use QL\Panthor\Utility\URI;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 class TestPageController implements ControllerInterface
 {
@@ -87,14 +88,9 @@ HTML;
 HTML;
 
     /**
-     * @var Response
+     * @var URI
      */
-    private $response;
-
-    /**
-     * @var Url
-     */
-    private $url;
+    private $uri;
 
     /**
      * @var array
@@ -102,33 +98,30 @@ HTML;
     private $toc;
 
     /**
-     * @var array
-     */
-    private $formatted;
-
-    /**
-     * @param Response $response
-     * @param Url $url
+     * @param URI $uri
      * @param array $toc
      */
-    public function __construct(Response $response, Url $url, array $toc)
+    public function __construct(URI $uri, array $toc)
     {
-        $this->response = $response;
-        $this->url = $url;
-
+        $this->uri = $uri;
         $this->toc = $toc;
-        $this->formatted = [];
     }
 
-    public function __invoke()
+    /**
+     * {@inheritdoc}
+     */
+    public function __invoke(ServerRequestInterface $request, ResponseInterface $response)
     {
+        $formatted = [];
         foreach ($this->toc as $route => $page) {
             list($title, $src) = $page;
-            $this->formatted[] = $this->formatPage($route, $title, $src);
+            $formatted[] = $this->formatPage($route, $title, $src);
         }
 
-        $html = str_replace('{examples}', implode('', $this->formatted), self::HTML);
-        $this->response->setBody($html);
+        $html = str_replace('{examples}', implode('', $formatted), self::HTML);
+
+        $response->getBody()->write($html);
+        return $response;
     }
 
     /**
@@ -140,6 +133,6 @@ HTML;
      */
     private function formatPage($route, $title, $src)
     {
-        return sprintf(self::PAGE_ROW, $this->url->urlFor($route), $title, $src);
+        return sprintf(self::PAGE_ROW, $this->uri->uriFor($route), $title, $src);
     }
 }
