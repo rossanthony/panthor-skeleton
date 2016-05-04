@@ -28,7 +28,9 @@ class TestPageController implements ControllerInterface
 
             table tr:not(:last-child) { border-bottom: 1px solid #999; }
 
-            code { background: #eee; color: red; padding: 2px; }
+            code, pre { background: #eee; color: red; padding: 2px; }
+            small { padding-left: .75em; }
+            li { margin-bottom: .5em; }
         </style>
     </head>
     <body>
@@ -51,29 +53,53 @@ class TestPageController implements ControllerInterface
         </p>
 
         <ul>
-            <li>Add your own logger so errors are logged somewhere!</li>
+            <li>Replace <code>@logger</code> with your own PSR-3 Logger so errors are logged somewhere!</li>
             <li>Use <b>Encrypted Cookies</b> to improve the security of your app.</li>
             <li>Add per-environment yaml config if you need to deploy to multiple environments.</li>
-            <li>Run <code>bin/compile-di</code> to cache the DI container before deploying to production.</li>
+            <li>
+                Run <code>bin/compile-di</code> to cache the DI container before deploying to production.
+                <br><small>DI caching is disabled by default. Set <code>%symfony.debug%</code> to <code>false</code> when deploying your app.</small>
+            </li>
+            <li>
+                Run <code>bin/compile-routes</code> to cache Routes before deploying to production.
+                <br><small>Route caching is disabled by default. Set <code>%routes.cache_disabled%</code> to <code>false</code> when deploying your app.</small>
+            </li>
             <li>
                 Run <code>bin/compile-templates</code> to cache templates before deploying to production.
                 <br><small>Template caching is disabled by default. Set <code>%twig.debug%</code> to <code>false</code> when deploying your app.</small>
+            </li>
+            <li>
+                Set <code>%slim.settings.display_errors%</code> to <code>false</code> when deploying your app to prevent users from seeing sensitive error details.
             </li>
         </ul>
 
         <h4>Creating an HTML Application?</h4>
         <ul>
             <li>
-                Remove the HTTP Problem Renderer to ensure all errors render through the twig template.
-                <br><small>(Or leave it, it will not fire unless an HTTP Problem is specifically thrown)</small>
+                Set your own <code>@content_handler</code> to override the default content handler configuration.
+                <br><small>(Or leave it, HTTP Problem will not be used unless the http client explicitly accepts that mediatype)</small>
+                <br><small>See <a href="https://github.com/quickenloans-mcp/mcp-panthor/blob/master/docs/ERRORS.md#exception-handler">Panthor documentation - error handling</a> for more information about content handlers.</small>
             </li>
         </ul>
 
         <h4>Creating an API?</h4>
         <ul>
             <li>
-                Remove the HTML Renderer to ensure all errors render as HTTP Problem.
-                <br><small>(If you don't like HTTP Problem, create your own error renderer)</small>
+                By default, html media types are handled through <b>Twig</b>. If you do not want Twig as a dependency of your API, you will need to redefine your Content Handler configuration.
+                <br>Here is an example of the media types handled by the default content handler:
+                <pre>panthor.content_handler:
+    class: 'QL\Panthor\ErrorHandling\ContentHandler\NegotiatingContentHandler'
+    arguments:
+        -
+            '*/*': '@panthor.content_handler.html'
+            'text/html': '@panthor.content_handler.html'
+            'application/problem': '@panthor.content_handler.problem'
+            'application/json': '@panthor.content_handler.json'
+            'text/plain': '@panthor.content_handler.text'</pre>
+            </li>
+            <li>
+                Set the service <code>@content_handler</code> to <code>@panthor.content_handler.problem</code> to ensure errors are always rendered as HTTP Problem.
+                <br><small>See <a href="https://github.com/quickenloans-mcp/mcp-panthor/blob/master/docs/ERRORS.md#exception-handler">Panthor documentation - error handling</a> for more information about content handlers.</small>
             </li>
         </ul>
     </body>
