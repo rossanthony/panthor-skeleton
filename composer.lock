@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "5a635ad8b7a315b5d4b3b425d4b7e085",
-    "content-hash": "c357f733e6803ae9d6356e4feca69d8b",
+    "hash": "ddb911746fd4e2fbc8898d1daf33a360",
+    "content-hash": "fc71eabb1690a220efe5ae9a4315525b",
     "packages": [
         {
             "name": "acclimate/container",
@@ -148,16 +148,16 @@
         },
         {
             "name": "nikic/fast-route",
-            "version": "v0.6.0",
+            "version": "v1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/FastRoute.git",
-                "reference": "31fa86924556b80735f98b294a7ffdfb26789f22"
+                "reference": "79843dce62ac52e9b628e73d5f1264cad10c65a6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/FastRoute/zipball/31fa86924556b80735f98b294a7ffdfb26789f22",
-                "reference": "31fa86924556b80735f98b294a7ffdfb26789f22",
+                "url": "https://api.github.com/repos/nikic/FastRoute/zipball/79843dce62ac52e9b628e73d5f1264cad10c65a6",
+                "reference": "79843dce62ac52e9b628e73d5f1264cad10c65a6",
                 "shasum": ""
             },
             "require": {
@@ -187,7 +187,7 @@
                 "router",
                 "routing"
             ],
-            "time": "2015-06-18 19:15:47"
+            "time": "2016-04-18 11:33:20"
         },
         {
             "name": "paragonie/random_compat",
@@ -432,16 +432,16 @@
         },
         {
             "name": "ql/mcp-panthor",
-            "version": "3.0.0",
+            "version": "3.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/quickenloans-mcp/mcp-panthor.git",
-                "reference": "b4759ed038a09833922c3e7a249b40531a588e08"
+                "reference": "6fd8177cf87a3e89034daaac07467f82604e73a9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/quickenloans-mcp/mcp-panthor/zipball/b4759ed038a09833922c3e7a249b40531a588e08",
-                "reference": "b4759ed038a09833922c3e7a249b40531a588e08",
+                "url": "https://api.github.com/repos/quickenloans-mcp/mcp-panthor/zipball/6fd8177cf87a3e89034daaac07467f82604e73a9",
+                "reference": "6fd8177cf87a3e89034daaac07467f82604e73a9",
                 "shasum": ""
             },
             "require": {
@@ -451,7 +451,7 @@
                 "psr/http-message": "~1.0",
                 "psr/log": "*",
                 "ql/mcp-common": "~1.0",
-                "slim/slim": "~3.3",
+                "slim/slim": "~3.4",
                 "symfony/config": "~3.0",
                 "symfony/dependency-injection": "~3.0",
                 "symfony/yaml": "~3.0"
@@ -489,28 +489,31 @@
                 "microframework",
                 "quickenloans"
             ],
-            "time": "2016-05-03 15:32:43"
+            "time": "2016-05-11 13:24:48"
         },
         {
             "name": "slim/slim",
-            "version": "3.3.0",
+            "version": "3.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/slimphp/Slim.git",
-                "reference": "939f2e85d57508de9cff241d10091cd972f221c3"
+                "reference": "954472c9d805802a3438d0202fc451282eaa37fc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/slimphp/Slim/zipball/939f2e85d57508de9cff241d10091cd972f221c3",
-                "reference": "939f2e85d57508de9cff241d10091cd972f221c3",
+                "url": "https://api.github.com/repos/slimphp/Slim/zipball/954472c9d805802a3438d0202fc451282eaa37fc",
+                "reference": "954472c9d805802a3438d0202fc451282eaa37fc",
                 "shasum": ""
             },
             "require": {
                 "container-interop/container-interop": "^1.1",
-                "nikic/fast-route": "^0.6",
+                "nikic/fast-route": "^1.0",
                 "php": ">=5.5.0",
                 "pimple/pimple": "^3.0",
                 "psr/http-message": "^1.0"
+            },
+            "provide": {
+                "psr/http-message-implementation": "1.0"
             },
             "require-dev": {
                 "phpunit/phpunit": "^4.0",
@@ -556,7 +559,7 @@
                 "micro",
                 "router"
             ],
-            "time": "2016-03-10 21:37:40"
+            "time": "2016-05-09 06:15:02"
         },
         {
             "name": "symfony/config",
@@ -672,7 +675,7 @@
         },
         {
             "name": "symfony/filesystem",
-            "version": "v3.0.5",
+            "version": "v3.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/filesystem.git",
