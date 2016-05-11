@@ -12,10 +12,10 @@ if (!$container = @include $root . '/configuration/bootstrap.php') {
 };
 
 $router = $container->get('router');
-$router->setCaching($container->get('router.cache_file'), false);
+$router->setCaching($container->get('panthor.router.cache_file'), false);
 
 $app = $container->get('slim');
-$routes = $container->get('panthor.routes');
+$routes = $container->get('router.loader');
 $routes($app);
 
 $router->initializeDispatcher();
