@@ -11,8 +11,8 @@
     },
 
     "require": {
-        "ql/mcp-panthor":       "3.0.1",
-        "ql/mcp-common":        "~1.0",
+        "ql/mcp-panthor": "3.0.2",
+        "ql/mcp-common":  "~1.0",
 
         "slim/slim":                    "~3.4",
         "symfony/config":               "~3.0",
@@ -20,7 +20,7 @@
         "symfony/finder":               "~3.0",
         "symfony/yaml":                 "~3.0",
 
-        "paragonie/random_compat":  "~1.1",
-        "twig/twig":                "~1.24"
+        "paragonie/random_compat": "~1.1",
+        "twig/twig":               "~1.24"
     }
 }
