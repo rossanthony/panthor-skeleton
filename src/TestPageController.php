@@ -159,6 +159,6 @@ HTML;
      */
     private function formatPage($route, $title, $src)
     {
-        return sprintf(self::PAGE_ROW, $this->uri->uriFor($route), $title, $src);
+        return sprintf(self::PAGE_ROW, $this->uri->uriFor($route, ['id' => 313]), $title, $src);
     }
 }

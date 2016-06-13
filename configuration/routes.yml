@@ -28,6 +28,10 @@ parameters:
             route: '/cookie'
             stack: ['page.cookie']
 
+        dynamic_url:
+            route: '/dynamic/edit/{id:[0-9]+}'
+            stack: ['page.dynamic_url']
+
         group_example:
             route: '/group'
             stack: ['middleware.test']
