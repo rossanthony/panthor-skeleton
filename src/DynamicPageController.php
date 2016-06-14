@@ -27,8 +27,14 @@ class DynamicPageController implements ControllerInterface
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response)
     {
-        $templateData = ['id' => $request->getAttribute('id')];
-        $rendered = $this->template->render($templateData);
+        $route = $request->getAttribute('route');
+
+        $context = [
+            'id' => $route->getArgument('id'),
+            'name' => $route->getArgument('name')
+        ];
+
+        $rendered = $this->template->render($context);
 
         $response->getBody()->write($rendered);
         return $response;

@@ -3,11 +3,29 @@
 {% set page_title = 'Dynamic URL Example Page' %}
 
 {% block page %}
-    <p>The ID of this page is {{ id }}.</p>
 
+    <p>
+        ID is limited to numbers with the following pattern: <code>[0-9]+</code>.
+        Name is optional, but has no restrictions.
+    </p>
+
+    <ul>
+        <li>The ID of this page is <b>{{ id }}</b>.</li>
+        <li>The name of this page is <b>{{ name ?: 'missing' }}</b>.</li>
+    </ul>
+
+    <p>Classes and templates used to build this page:</p>
     <ul>
         <li>Controller Source: <code>src/DynamicPageController.php</code></li>
         <li>Template Source: <code>templates/sample_dynamic_page.twig</code></li>
+    </ul>
+
+    <p>Visit page with other route parameters:</p>
+    <ul>
+        <li><a href="{{ uriFor('dynamic_url', {id: '313'}) }}">Valid ID: 313</a></li>
+        <li><a href="{{ uriFor('dynamic_url', {id: '123456789'}) }}">Valid ID: 123456789</a></li>
+        <li><a href="{{ uriFor('dynamic_url', {id: '313', 'name': 'testing'}) }}">Valid ID with name: testing</a></li>
+        <li><a href="{{ uriFor('dynamic_url', {id: 'abcdef'}) }}">Invalid ID: abcdef</a> (Will result in 404)</li>
     </ul>
 
     <a href="{{ uriFor('hello_world') }}">Back to Home</a>

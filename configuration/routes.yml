@@ -29,7 +29,7 @@ parameters:
             stack: ['page.cookie']
 
         dynamic_url:
-            route: '/dynamic/edit/{id:[0-9]+}'
+            route: '/dynamic/edit/{id:[0-9]+}[/optional/{name}]'
             stack: ['page.dynamic_url']
 
         group_example:
