@@ -44,3 +44,12 @@ services:
 
     middleware.test:
         class: 'PanthorApplication\TestMiddleware'
+
+    # Controller for testing dynamic url page
+    page.dynamic_url:
+        class: 'PanthorApplication\DynamicPageController'
+        arguments: ['@page.dynamic.template']
+
+    page.dynamic.template:
+        parent: 'twig.template'
+        calls: [['setTemplate', ['sample_dynamic_page.twig']]]

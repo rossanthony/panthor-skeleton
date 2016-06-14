@@ -1,0 +1,15 @@
+{% extends 'layout.html.twig' %}
+
+{% set page_title = 'Dynamic URL Example Page' %}
+
+{% block page %}
+    <p>The ID of this page is {{ id }}.</p>
+
+    <ul>
+        <li>Controller Source: <code>src/DynamicPageController.php</code></li>
+        <li>Template Source: <code>templates/sample_dynamic_page.twig</code></li>
+    </ul>
+
+    <a href="{{ uriFor('hello_world') }}">Back to Home</a>
+
+{% endblock %}

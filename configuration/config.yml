@@ -9,6 +9,7 @@ parameters:
     table_of_contents:
         hello_world:         ['Hello World!', 'src/TestPageController.php']
         twig_example:        ['Twig Example', 'src/TwigController.php']
+        dynamic_url:         ['Dynamic URL Example', 'src/DynamicPageController.php']
         errors:              ['Test Error Handling', 'src/ErrorTestingController.php']
         api_example:         ['API Example', 'src/APIController.php']
         api_problem:         ['API Problem', 'src/APIProblemController.php']
