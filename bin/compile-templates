@@ -4,7 +4,7 @@
 namespace PanthorApplication\Bin;
 
 use QL\Panthor\Bootstrap\Di;
-use Slim\Environment;
+use Slim\Http\Environment;
 use Symfony\Component\Finder\Finder;
 use Twig_Cache_Filesystem;
 
