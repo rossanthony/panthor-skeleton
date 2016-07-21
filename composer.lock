@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "8cf20cf0b5c53c773d70c536cba02f95",
-    "content-hash": "a5bfe8eddc110a96f3ff3b028ff3a1ab",
+    "hash": "3ed574bee9fabac1189c37f2fd1ea8f9",
+    "content-hash": "ba29b13db63af32597a3e67996ffe49a",
     "packages": [
         {
             "name": "acclimate/container",
@@ -432,16 +432,16 @@
         },
         {
             "name": "ql/mcp-panthor",
-            "version": "3.0.2",
+            "version": "3.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/quickenloans-mcp/mcp-panthor.git",
-                "reference": "a854c8708787b250aea93fce68eea09b928240be"
+                "reference": "50a09616c5c8e00e2d773e83134bec557cafda53"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/quickenloans-mcp/mcp-panthor/zipball/a854c8708787b250aea93fce68eea09b928240be",
-                "reference": "a854c8708787b250aea93fce68eea09b928240be",
+                "url": "https://api.github.com/repos/quickenloans-mcp/mcp-panthor/zipball/50a09616c5c8e00e2d773e83134bec557cafda53",
+                "reference": "50a09616c5c8e00e2d773e83134bec557cafda53",
                 "shasum": ""
             },
             "require": {
@@ -489,7 +489,7 @@
                 "microframework",
                 "quickenloans"
             ],
-            "time": "2016-05-12 15:46:04"
+            "time": "2016-07-21 13:07:19"
         },
         {
             "name": "slim/slim",
